@@ -26,6 +26,8 @@ linters-settings:
           - net/http
           - github.com/gorilla/mux
           - time
+          - github.com/swaggo/http-swagger
+          - github.com/cronnoss/tickets-api/docs
           - github.com/cronnoss/tickets-api/internal/app/config
           - github.com/cronnoss/tickets-api/internal/app/domain
           - github.com/cronnoss/tickets-api/internal/app/transport/httpserver
@@ -43,6 +45,9 @@ issues:
     - path: internal/app/repository/memory
       linters:
         - dupl
+    - path: \.go
+      linters:
+        - godot
 
 linters:
   disable-all: true

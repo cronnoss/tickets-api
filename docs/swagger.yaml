@@ -1,0 +1,164 @@
+definitions:
+  httpserver.EventListResponse:
+    properties:
+      response:
+        items:
+          $ref: '#/definitions/httpserver.EventResponse'
+        type: array
+    type: object
+  httpserver.EventResponse:
+    properties:
+      date:
+        type: string
+      id:
+        type: integer
+      showId:
+        type: integer
+    type: object
+  httpserver.PlaceListResponse:
+    properties:
+      response:
+        items:
+          $ref: '#/definitions/httpserver.PlaceResponse'
+        type: array
+    type: object
+  httpserver.PlaceResponse:
+    properties:
+      height:
+        type: number
+      id:
+        type: integer
+      is_available:
+        description: 'nolint: tagliatelle'
+        type: boolean
+      width:
+        type: number
+      x:
+        type: number
+      "y":
+        type: number
+    type: object
+  httpserver.ShowListResponse:
+    properties:
+      response:
+        items:
+          $ref: '#/definitions/httpserver.ShowResponse'
+        type: array
+    type: object
+  httpserver.ShowResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  server.ErrorResponse:
+    properties:
+      error:
+        type: string
+      slug:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API Server for remote Tickets Application
+  title: Tickets API
+  version: "0.1"
+paths:
+  /events/{id}/places:
+    get:
+      consumes:
+      - application/json
+      description: get places by event ID
+      operationId: get-places
+      parameters:
+      - description: event ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpserver.PlaceListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: GetPlaces
+      tags:
+      - place
+  /shows:
+    get:
+      consumes:
+      - application/json
+      description: Get shows from remote API and store them in the local service
+      operationId: get-shows
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpserver.ShowListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: GetShows
+      tags:
+      - shows
+  /shows/{id}/events:
+    get:
+      consumes:
+      - application/json
+      description: get events by show ID
+      operationId: get-events
+      parameters:
+      - description: show ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/httpserver.EventListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/server.ErrorResponse'
+      summary: GetEvents
+      tags:
+      - event
+swagger: "2.0"

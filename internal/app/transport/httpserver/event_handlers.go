@@ -11,6 +11,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// @Summary GetEvents
+// @Tags event
+// @Description get events by show ID
+// @ID get-events
+// @Accept  json
+// @Produce  json
+// @Param id path int true "show ID"
+// @Success 200 {object} EventListResponse
+// @Failure 400,404 {object} server.ErrorResponse
+// @Failure 500 {object} server.ErrorResponse
+// @Router /shows/{id}/events [get]
 func (h *HTTPServer) GetEvents(w http.ResponseWriter, r *http.Request) {
 	// Step 1: Make a GET request to the remote API
 	vars := mux.Vars(r)

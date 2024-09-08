@@ -10,6 +10,16 @@ import (
 	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
+// @Summary GetShows
+// @Tags shows
+// @Description Get shows from remote API and store them in the local service
+// @ID get-shows
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} ShowListResponse
+// @Failure 400,404 {object} server.ErrorResponse
+// @Failure 500 {object} server.ErrorResponse
+// @Router /shows [get]
 func (h *HTTPServer) GetShows(w http.ResponseWriter, r *http.Request) {
 	// Step 1: Make a GET request to the remote API
 	remoteURL := "https://leadbook.ru/test-task-api/shows"

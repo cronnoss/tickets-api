@@ -11,6 +11,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// @Summary GetPlaces
+// @Tags place
+// @Description get places by event ID
+// @ID get-places
+// @Accept  json
+// @Produce  json
+// @Param id path int true "event ID"
+// @Success 200 {object} PlaceListResponse
+// @Failure 400,404 {object} server.ErrorResponse
+// @Failure 500 {object} server.ErrorResponse
+// @Router /events/{id}/places [get]
 func (h *HTTPServer) GetPlaces(w http.ResponseWriter, r *http.Request) {
 	// Step 1: Make a GET request to the remote API
 	vars := mux.Vars(r)
