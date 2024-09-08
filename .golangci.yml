@@ -26,7 +26,11 @@ linters-settings:
           - net/http
           - github.com/gorilla/mux
           - time
+          - testing
           - github.com/swaggo/http-swagger
+          - github.com/stretchr/testify/assert
+          - github.com/stretchr/testify/mock
+          - github.com/stretchr/testify/require
           - github.com/cronnoss/tickets-api/docs
           - github.com/cronnoss/tickets-api/internal/app/config
           - github.com/cronnoss/tickets-api/internal/app/domain
@@ -35,7 +39,6 @@ linters-settings:
           - github.com/cronnoss/tickets-api/internal/app/services
           - github.com/cronnoss/tickets-api/internal/app/repository/memory
           - github.com/cronnoss/tickets-api/internal/app/common/slugerrors
-
 
 issues:
   exclude-rules:

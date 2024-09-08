@@ -7,7 +7,7 @@ import (
 	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
-type mapEvent map[int64]*domain.NewEventData
+type mapEvent map[int64]*domain.Event
 
 type StorageEvent struct {
 	data mapEvent
@@ -19,10 +19,10 @@ func NewEventRepo() StorageEvent {
 }
 
 // GetEvents returns events.
-func (s *StorageEvent) GetEvents(_ context.Context) ([]domain.NewEventData, error) {
+func (s *StorageEvent) GetEvents(_ context.Context) ([]domain.Event, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	sliceS := []domain.NewEventData{}
+	sliceS := []domain.Event{}
 	for _, v := range s.data {
 		sliceS = append(sliceS, *v)
 	}
@@ -30,7 +30,7 @@ func (s *StorageEvent) GetEvents(_ context.Context) ([]domain.NewEventData, erro
 }
 
 // CreateEvents creates events.
-func (s *StorageEvent) CreateEvents(_ context.Context, events []domain.NewEventData) ([]domain.NewEventData, error) {
+func (s *StorageEvent) CreateEvents(_ context.Context, events []domain.Event) ([]domain.Event, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	for i := range events {
@@ -41,7 +41,7 @@ func (s *StorageEvent) CreateEvents(_ context.Context, events []domain.NewEventD
 }
 
 // CreateEvent creates a event.
-func (s *StorageEvent) CreateEvent(_ context.Context, event domain.NewEventData) (domain.NewEventData, error) {
+func (s *StorageEvent) CreateEvent(_ context.Context, event domain.Event) (domain.Event, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	event.ID = getNewIDSafe()

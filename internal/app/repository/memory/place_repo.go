@@ -7,7 +7,7 @@ import (
 	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
-type mapPlace map[int64]*domain.NewPlaceData
+type mapPlace map[int64]*domain.Place
 
 type StoragePlace struct {
 	data mapPlace
@@ -19,10 +19,10 @@ func NewPlaceRepo() StoragePlace {
 }
 
 // GetPlaces returns places.
-func (s *StoragePlace) GetPlaces(_ context.Context) ([]domain.NewPlaceData, error) {
+func (s *StoragePlace) GetPlaces(_ context.Context) ([]domain.Place, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	sliceS := []domain.NewPlaceData{}
+	sliceS := []domain.Place{}
 	for _, v := range s.data {
 		sliceS = append(sliceS, *v)
 	}
@@ -30,7 +30,7 @@ func (s *StoragePlace) GetPlaces(_ context.Context) ([]domain.NewPlaceData, erro
 }
 
 // CreatePlaces creates places.
-func (s *StoragePlace) CreatePlaces(_ context.Context, places []domain.NewPlaceData) ([]domain.NewPlaceData, error) {
+func (s *StoragePlace) CreatePlaces(_ context.Context, places []domain.Place) ([]domain.Place, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	for i := range places {
@@ -41,7 +41,7 @@ func (s *StoragePlace) CreatePlaces(_ context.Context, places []domain.NewPlaceD
 }
 
 // CreatePlace creates a place.
-func (s *StoragePlace) CreatePlace(_ context.Context, place domain.NewPlaceData) (domain.NewPlaceData, error) {
+func (s *StoragePlace) CreatePlace(_ context.Context, place domain.Place) (domain.Place, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	place.ID = getNewIDSafe()

@@ -19,16 +19,16 @@ func NewEventService(repo EventRepo) EventService {
 }
 
 // GetEvents returns events.
-func (s EventService) GetEvents(ctx context.Context) ([]domain.NewEventData, error) {
+func (s EventService) GetEvents(ctx context.Context) ([]domain.Event, error) {
 	return s.repo.GetEvents(ctx)
 }
 
 // CreateEvents creates events.
-func (s EventService) CreateEvents(ctx context.Context, events []domain.NewEventData) ([]domain.NewEventData, error) {
+func (s EventService) CreateEvents(ctx context.Context, events []domain.Event) ([]domain.Event, error) {
 	return s.repo.CreateEvents(ctx, events)
 }
 
 // CreateEvent creates a event.
-func (s EventService) CreateEvent(ctx context.Context, event domain.NewEventData) (domain.NewEventData, error) {
+func (s EventService) CreateEvent(ctx context.Context, event domain.Event) (domain.Event, error) {
 	return s.repo.CreateEvent(ctx, event)
 }

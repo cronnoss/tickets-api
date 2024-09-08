@@ -8,7 +8,7 @@ import (
 	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
-type mapShow map[int64]*domain.NewShowData
+type mapShow map[int64]*domain.Show
 
 type StorageShow struct {
 	data mapShow
@@ -26,10 +26,10 @@ func NewShowRepo() StorageShow {
 }
 
 // GetShows returns shows.
-func (s *StorageShow) GetShows(_ context.Context) ([]domain.NewShowData, error) {
+func (s *StorageShow) GetShows(_ context.Context) ([]domain.Show, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	sliceS := []domain.NewShowData{}
+	sliceS := []domain.Show{}
 	for _, v := range s.data {
 		sliceS = append(sliceS, *v)
 	}
@@ -37,7 +37,7 @@ func (s *StorageShow) GetShows(_ context.Context) ([]domain.NewShowData, error) 
 }
 
 // CreateShows creates shows.
-func (s *StorageShow) CreateShows(_ context.Context, shows []domain.NewShowData) ([]domain.NewShowData, error) {
+func (s *StorageShow) CreateShows(_ context.Context, shows []domain.Show) ([]domain.Show, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	for i := range shows {
@@ -48,7 +48,7 @@ func (s *StorageShow) CreateShows(_ context.Context, shows []domain.NewShowData)
 }
 
 // CreateShow creates a show.
-func (s *StorageShow) CreateShow(_ context.Context, show domain.NewShowData) (domain.NewShowData, error) {
+func (s *StorageShow) CreateShow(_ context.Context, show domain.Show) (domain.Show, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	show.ID = getNewIDSafe()

@@ -50,7 +50,7 @@ func (h *HTTPServer) GetShows(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over shows and store them in the local service
 	for _, show := range showListResponse.Response {
-		_, err := h.showService.CreateShow(r.Context(), domain.NewShowData{
+		_, err := h.showService.CreateShow(r.Context(), domain.Show{
 			ID:   int64(show.ID),
 			Name: show.Name,
 		})

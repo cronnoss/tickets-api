@@ -54,7 +54,7 @@ func (h *HTTPServer) GetEvents(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over events and store them in the local service
 	for _, event := range eventListResponse.Response {
-		_, err := h.eventService.CreateEvent(r.Context(), domain.NewEventData{
+		_, err := h.eventService.CreateEvent(r.Context(), domain.Event{
 			ID:     int64(event.ID),
 			ShowID: int64(event.ShowID),
 			Date:   event.Date,

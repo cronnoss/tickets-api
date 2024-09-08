@@ -7,19 +7,19 @@ import (
 )
 
 type ShowRepo interface {
-	GetShows(ctx context.Context) ([]domain.NewShowData, error)
-	CreateShows(ctx context.Context, shows []domain.NewShowData) ([]domain.NewShowData, error)
-	CreateShow(ctx context.Context, show domain.NewShowData) (domain.NewShowData, error)
+	GetShows(ctx context.Context) ([]domain.Show, error)
+	CreateShows(ctx context.Context, shows []domain.Show) ([]domain.Show, error)
+	CreateShow(ctx context.Context, show domain.Show) (domain.Show, error)
 }
 
 type EventRepo interface {
-	GetEvents(ctx context.Context) ([]domain.NewEventData, error)
-	CreateEvents(ctx context.Context, events []domain.NewEventData) ([]domain.NewEventData, error)
-	CreateEvent(ctx context.Context, event domain.NewEventData) (domain.NewEventData, error)
+	GetEvents(ctx context.Context) ([]domain.Event, error)
+	CreateEvents(ctx context.Context, events []domain.Event) ([]domain.Event, error)
+	CreateEvent(ctx context.Context, event domain.Event) (domain.Event, error)
 }
 
 type PlaceRepo interface {
-	GetPlaces(ctx context.Context) ([]domain.NewPlaceData, error)
-	CreatePlaces(ctx context.Context, places []domain.NewPlaceData) ([]domain.NewPlaceData, error)
-	CreatePlace(ctx context.Context, place domain.NewPlaceData) (domain.NewPlaceData, error)
+	GetPlaces(ctx context.Context) ([]domain.Place, error)
+	CreatePlaces(ctx context.Context, places []domain.Place) ([]domain.Place, error)
+	CreatePlace(ctx context.Context, place domain.Place) (domain.Place, error)
 }

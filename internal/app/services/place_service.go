@@ -19,16 +19,16 @@ func NewPlaceService(repo PlaceRepo) PlaceService {
 }
 
 // GetPlaces returns places.
-func (s PlaceService) GetPlaces(ctx context.Context) ([]domain.NewPlaceData, error) {
+func (s PlaceService) GetPlaces(ctx context.Context) ([]domain.Place, error) {
 	return s.repo.GetPlaces(ctx)
 }
 
 // CreatePlaces creates places.
-func (s PlaceService) CreatePlaces(ctx context.Context, places []domain.NewPlaceData) ([]domain.NewPlaceData, error) {
+func (s PlaceService) CreatePlaces(ctx context.Context, places []domain.Place) ([]domain.Place, error) {
 	return s.repo.CreatePlaces(ctx, places)
 }
 
 // CreatePlace creates a place.
-func (s PlaceService) CreatePlace(ctx context.Context, place domain.NewPlaceData) (domain.NewPlaceData, error) {
+func (s PlaceService) CreatePlace(ctx context.Context, place domain.Place) (domain.Place, error) {
 	return s.repo.CreatePlace(ctx, place)
 }

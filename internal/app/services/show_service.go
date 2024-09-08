@@ -19,16 +19,16 @@ func NewShowService(repo ShowRepo) ShowService {
 }
 
 // GetShows returns shows.
-func (s ShowService) GetShows(ctx context.Context) ([]domain.NewShowData, error) {
+func (s ShowService) GetShows(ctx context.Context) ([]domain.Show, error) {
 	return s.repo.GetShows(ctx)
 }
 
 // CreateShows creates shows.
-func (s ShowService) CreateShows(ctx context.Context, shows []domain.NewShowData) ([]domain.NewShowData, error) {
+func (s ShowService) CreateShows(ctx context.Context, shows []domain.Show) ([]domain.Show, error) {
 	return s.repo.CreateShows(ctx, shows)
 }
 
 // CreateShow creates a show.
-func (s ShowService) CreateShow(ctx context.Context, show domain.NewShowData) (domain.NewShowData, error) {
+func (s ShowService) CreateShow(ctx context.Context, show domain.Show) (domain.Show, error) {
 	return s.repo.CreateShow(ctx, show)
 }

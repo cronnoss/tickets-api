@@ -54,7 +54,7 @@ func (h *HTTPServer) GetPlaces(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over places and store them in the local service
 	for _, place := range placeListResponse.Response {
-		_, err := h.placeService.CreatePlace(r.Context(), domain.NewPlaceData{
+		_, err := h.placeService.CreatePlace(r.Context(), domain.Place{
 			ID:          int64(place.ID),
 			X:           float32(place.X),
 			Y:           float32(place.Y),
