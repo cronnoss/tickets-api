@@ -2,14 +2,14 @@ package domain
 
 // Event is a domain event.
 type Event struct {
-	id     int
-	showID int
+	id     int64
+	showID int64
 	date   string
 }
 
 type NewEventData struct {
-	ID     int
-	ShowID int
+	ID     int64
+	ShowID int64
 	Date   string
 }
 
@@ -23,12 +23,12 @@ func NewEvent(data NewEventData) (Event, error) {
 }
 
 // ID returns the event ID.
-func (e Event) ID() int {
+func (e Event) ID() int64 {
 	return e.id
 }
 
 // ShowID returns the event show ID.
-func (e Event) ShowID() int {
+func (e Event) ShowID() int64 {
 	return e.showID
 }
 

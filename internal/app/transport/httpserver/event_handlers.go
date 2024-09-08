@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/cronnoss/tickets-api/internal/app/common/server"
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 	"github.com/gorilla/mux"
 )
 
@@ -43,9 +43,9 @@ func (h *HTTPServer) GetEvents(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over events and store them in the local service
 	for _, event := range eventListResponse.Response {
-		_, err := h.eventService.CreateEvent(r.Context(), models.Event{
-			ID:     event.ID,
-			ShowID: event.ShowID,
+		_, err := h.eventService.CreateEvent(r.Context(), domain.NewEventData{
+			ID:     int64(event.ID),
+			ShowID: int64(event.ShowID),
 			Date:   event.Date,
 		})
 		if err != nil {

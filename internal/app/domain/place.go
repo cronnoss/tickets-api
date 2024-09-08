@@ -2,7 +2,7 @@ package domain
 
 // Place is a domain place.
 type Place struct {
-	id          int
+	id          int64
 	x           float32
 	y           float32
 	width       float32
@@ -11,7 +11,7 @@ type Place struct {
 }
 
 type NewPlaceData struct {
-	ID          int
+	ID          int64
 	X           float32
 	Y           float32
 	Width       float32
@@ -32,7 +32,7 @@ func NewPlace(data NewPlaceData) (Place, error) {
 }
 
 // ID returns the place ID.
-func (p Place) ID() int {
+func (p Place) ID() int64 {
 	return p.id
 }
 

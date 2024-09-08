@@ -5,22 +5,22 @@ package httpserver
 import (
 	"context"
 
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
 // ShowService is a show service.
 type ShowService interface {
-	GetShows(ctx context.Context) ([]models.Show, error)
-	CreateShow(ctx context.Context, show models.Show) (models.Show, error)
+	GetShows(ctx context.Context) ([]domain.NewShowData, error)
+	CreateShow(ctx context.Context, show domain.NewShowData) (domain.NewShowData, error)
 }
 
 // EventService is a event service.
 type EventService interface {
-	GetEvents(ctx context.Context) ([]models.Event, error)
-	CreateEvent(ctx context.Context, event models.Event) (models.Event, error)
+	GetEvents(ctx context.Context) ([]domain.NewEventData, error)
+	CreateEvent(ctx context.Context, event domain.NewEventData) (domain.NewEventData, error)
 }
 
 type PlaceService interface {
-	GetPlaces(ctx context.Context) ([]models.Place, error)
-	CreatePlace(ctx context.Context, place models.Place) (models.Place, error)
+	GetPlaces(ctx context.Context) ([]domain.NewPlaceData, error)
+	CreatePlace(ctx context.Context, place domain.NewPlaceData) (domain.NewPlaceData, error)
 }

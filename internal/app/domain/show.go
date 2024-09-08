@@ -3,12 +3,12 @@ package domain
 // Show is a domain show.
 
 type Show struct {
-	id   int
+	id   int64
 	name string
 }
 
 type NewShowData struct {
-	ID   int
+	ID   int64
 	Name string
 }
 
@@ -21,7 +21,7 @@ func NewShow(data NewShowData) (Show, error) {
 }
 
 // ID returns the show ID.
-func (s Show) ID() int {
+func (s Show) ID() int64 {
 	return s.id
 }
 

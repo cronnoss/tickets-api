@@ -3,23 +3,23 @@ package services
 import (
 	"context"
 
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
 type ShowRepo interface {
-	GetShows(ctx context.Context) ([]models.Show, error)
-	CreateShows(ctx context.Context, shows []models.Show) ([]models.Show, error)
-	CreateShow(ctx context.Context, show models.Show) (models.Show, error)
+	GetShows(ctx context.Context) ([]domain.NewShowData, error)
+	CreateShows(ctx context.Context, shows []domain.NewShowData) ([]domain.NewShowData, error)
+	CreateShow(ctx context.Context, show domain.NewShowData) (domain.NewShowData, error)
 }
 
 type EventRepo interface {
-	GetEvents(ctx context.Context) ([]models.Event, error)
-	CreateEvents(ctx context.Context, events []models.Event) ([]models.Event, error)
-	CreateEvent(ctx context.Context, event models.Event) (models.Event, error)
+	GetEvents(ctx context.Context) ([]domain.NewEventData, error)
+	CreateEvents(ctx context.Context, events []domain.NewEventData) ([]domain.NewEventData, error)
+	CreateEvent(ctx context.Context, event domain.NewEventData) (domain.NewEventData, error)
 }
 
 type PlaceRepo interface {
-	GetPlaces(ctx context.Context) ([]models.Place, error)
-	CreatePlaces(ctx context.Context, places []models.Place) ([]models.Place, error)
-	CreatePlace(ctx context.Context, place models.Place) (models.Place, error)
+	GetPlaces(ctx context.Context) ([]domain.NewPlaceData, error)
+	CreatePlaces(ctx context.Context, places []domain.NewPlaceData) ([]domain.NewPlaceData, error)
+	CreatePlace(ctx context.Context, place domain.NewPlaceData) (domain.NewPlaceData, error)
 }

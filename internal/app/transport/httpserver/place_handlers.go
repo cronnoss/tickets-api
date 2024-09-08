@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/cronnoss/tickets-api/internal/app/common/server"
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 	"github.com/gorilla/mux"
 )
 
@@ -43,12 +43,12 @@ func (h *HTTPServer) GetPlaces(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over places and store them in the local service
 	for _, place := range placeListResponse.Response {
-		_, err := h.placeService.CreatePlace(r.Context(), models.Place{
-			ID:          place.ID,
-			X:           place.X,
-			Y:           place.Y,
-			Width:       place.Width,
-			Height:      place.Height,
+		_, err := h.placeService.CreatePlace(r.Context(), domain.NewPlaceData{
+			ID:          int64(place.ID),
+			X:           float32(place.X),
+			Y:           float32(place.Y),
+			Width:       float32(place.Width),
+			Height:      float32(place.Height),
 			IsAvailable: place.IsAvailable,
 		})
 		if err != nil {

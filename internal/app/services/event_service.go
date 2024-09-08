@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
 // EventService is a event service.
@@ -19,16 +19,16 @@ func NewEventService(repo EventRepo) EventService {
 }
 
 // GetEvents returns events.
-func (s EventService) GetEvents(ctx context.Context) ([]models.Event, error) {
+func (s EventService) GetEvents(ctx context.Context) ([]domain.NewEventData, error) {
 	return s.repo.GetEvents(ctx)
 }
 
 // CreateEvents creates events.
-func (s EventService) CreateEvents(ctx context.Context, events []models.Event) ([]models.Event, error) {
+func (s EventService) CreateEvents(ctx context.Context, events []domain.NewEventData) ([]domain.NewEventData, error) {
 	return s.repo.CreateEvents(ctx, events)
 }
 
 // CreateEvent creates a event.
-func (s EventService) CreateEvent(ctx context.Context, event models.Event) (models.Event, error) {
+func (s EventService) CreateEvent(ctx context.Context, event domain.NewEventData) (domain.NewEventData, error) {
 	return s.repo.CreateEvent(ctx, event)
 }

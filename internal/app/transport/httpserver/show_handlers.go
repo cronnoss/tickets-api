@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/cronnoss/tickets-api/internal/app/common/server"
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
 func (h *HTTPServer) GetShows(w http.ResponseWriter, r *http.Request) {
@@ -40,8 +40,8 @@ func (h *HTTPServer) GetShows(w http.ResponseWriter, r *http.Request) {
 
 	// Step 3: Iterate over shows and store them in the local service
 	for _, show := range showListResponse.Response {
-		_, err := h.showService.CreateShow(r.Context(), models.Show{
-			ID:   show.ID,
+		_, err := h.showService.CreateShow(r.Context(), domain.NewShowData{
+			ID:   int64(show.ID),
 			Name: show.Name,
 		})
 		if err != nil {

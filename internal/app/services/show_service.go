@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/cronnoss/tickets-api/internal/app/repository/models"
+	"github.com/cronnoss/tickets-api/internal/app/domain"
 )
 
 // ShowService is a show service.
@@ -19,16 +19,16 @@ func NewShowService(repo ShowRepo) ShowService {
 }
 
 // GetShows returns shows.
-func (s ShowService) GetShows(ctx context.Context) ([]models.Show, error) {
+func (s ShowService) GetShows(ctx context.Context) ([]domain.NewShowData, error) {
 	return s.repo.GetShows(ctx)
 }
 
 // CreateShows creates shows.
-func (s ShowService) CreateShows(ctx context.Context, shows []models.Show) ([]models.Show, error) {
+func (s ShowService) CreateShows(ctx context.Context, shows []domain.NewShowData) ([]domain.NewShowData, error) {
 	return s.repo.CreateShows(ctx, shows)
 }
 
 // CreateShow creates a show.
-func (s ShowService) CreateShow(ctx context.Context, show models.Show) (models.Show, error) {
+func (s ShowService) CreateShow(ctx context.Context, show domain.NewShowData) (domain.NewShowData, error) {
 	return s.repo.CreateShow(ctx, show)
 }

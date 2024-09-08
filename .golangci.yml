@@ -1,0 +1,93 @@
+run:
+  tests: true
+  build-tags:
+    - bench
+    - !bench
+
+linters-settings:
+  funlen:
+    lines: 150
+    statements: 80
+  depguard:
+    rules:
+      main:
+        allow:
+          - fmt
+          - errors
+          - os
+          - os/signal
+          - syscall
+          - context
+          - io
+          - sync
+          - sync/atomic
+          - encoding/json
+          - log
+          - net/http
+          - github.com/gorilla/mux
+          - time
+          - github.com/cronnoss/tickets-api/internal/app/config
+          - github.com/cronnoss/tickets-api/internal/app/domain
+          - github.com/cronnoss/tickets-api/internal/app/transport/httpserver
+          - github.com/cronnoss/tickets-api/internal/app/common/server
+          - github.com/cronnoss/tickets-api/internal/app/services
+          - github.com/cronnoss/tickets-api/internal/app/repository/memory
+          - github.com/cronnoss/tickets-api/internal/app/common/slugerrors
+
+
+issues:
+  exclude-rules:
+    - path: \.go
+      linters:
+        - nolintlint
+    - path: internal/app/repository/memory
+      linters:
+        - dupl
+
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - depguard
+    - dogsled
+    - dupl
+    - bodyclose
+    - durationcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - funlen
+    - gci
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gofmt
+    - gofumpt
+    - goheader
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - importas
+    - ineffassign
+    - lll
+    - makezero
+    - misspell
+    - nestif
+    - nilerr
+    - noctx
+    - nolintlint
+    - prealloc
+    - predeclared
+    - revive
+    - staticcheck
+    - stylecheck
+    - tagliatelle
+    - thelper
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
